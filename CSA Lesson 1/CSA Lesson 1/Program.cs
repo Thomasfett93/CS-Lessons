@@ -6,28 +6,35 @@ namespace CSA_Lesson_1
     {
         static void Main(string[] args)
         {
-            Console.Write("Base: ");
-            int b = Convert.ToInt32(Console.ReadLine());
+            string myString = Console.ReadLine();
+            string CurrentWord = "";
+            string Result = "";
+            for (int i = 0; i < myString.Length; ++i)
+            {
+                if (myString[i] == ' ' || i == myString.Length - 1)
+                {
+                    if (i == myString.Length - 1)
+                    {
+                        CurrentWord += myString[i];
+                    }
 
-            Console.Write("Power: ");
-            int p = Convert.ToInt32(Console.ReadLine());
+                    char first = CurrentWord[0];
+                    CurrentWord = CurrentWord.Substring(1);
+                    CurrentWord += first + "ay";
+                    Result += CurrentWord + " ";
+                    CurrentWord = "";
+                }
+                else
+                {
+                    CurrentWord += myString[i];
+                }
+            }
 
-            int result = ExpFun(b, p);
 
-            Console.WriteLine(result);
+            Console.WriteLine(Result);
             Console.ReadKey();
 
         }
-
-        static int ExpFun(int originalvar, int power)
-        {
-            int var1 = originalvar;
-            for (int i = 0; i < power - 1; ++i)
-            {
-                var1 *= originalvar;
-            }
-
-            return var1;
-        }
+        
     }
 }
