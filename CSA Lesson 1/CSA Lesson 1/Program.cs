@@ -6,35 +6,41 @@ namespace CSA_Lesson_1
     {
         static void Main(string[] args)
         {
-            string myString = Console.ReadLine();
-            string CurrentWord = "";
-            string Result = "";
-            for (int i = 0; i < myString.Length; ++i)
-            {
-                if (myString[i] == ' ' || i == myString.Length - 1)
-                {
-                    if (i == myString.Length - 1)
-                    {
-                        CurrentWord += myString[i];
-                    }
-
-                    char first = CurrentWord[0];
-                    CurrentWord = CurrentWord.Substring(1);
-                    CurrentWord += first + "ay";
-                    Result += CurrentWord + " ";
-                    CurrentWord = "";
-                }
-                else
-                {
-                    CurrentWord += myString[i];
-                }
-            }
-
-
-            Console.WriteLine(Result);
+            string reverse = ToReverse(Console.ReadLine());
+            Console.WriteLine(reverse);
             Console.ReadKey();
 
         }
+
+        static string ToReverse(string myString)
+        {
+            string result = "";
+            for (int i = myString.Length - 1; i >= 0; i--)
+            {
+                result += myString[i];
+            }
+            return result;
+
+        }
+        
+        static string ToPigLatin(string myString)
+        {
+            string[] myArray = myString.Split(' ');
+
+            string result = "";
+            for (int i = 0; i < myArray.Length; ++i)
+            {
+                string temp = myArray[i];
+
+                char first = temp[0];
+                temp = temp.Substring(1);
+                temp += first + "ay";
+                result += temp + " ";
+            }
+
+            return result;
+        }
+        
         
     }
 }
