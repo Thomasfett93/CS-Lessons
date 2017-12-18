@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace CSA_Lesson_1
 {
@@ -6,10 +7,40 @@ namespace CSA_Lesson_1
     {
         static void Main(string[] args)
         {
-            string reverse = ToReverse(Console.ReadLine());
-            Console.WriteLine(reverse);
+            string response = Palindrome(Console.ReadLine());
+            Console.WriteLine(response);
             Console.ReadKey();
 
+        }
+
+        static string Palindrome(string myString)
+        {
+            string reverse = ToReverse(myString);
+            for (int i = 0; i < myString.Length; ++i)
+            {
+                if (myString[i] != reverse[i])
+                {
+                    return "No";
+                }
+            }
+            return "*snaps* Yes!";
+        }
+
+
+        static int VowelCount(string myString)
+        {
+            string vowels = "aeiou";
+            int num = 0;
+
+            for (int i = 0; i < myString.Length; ++i)
+            {
+                if (vowels.Contains(myString[i]))
+                {
+                    num += 1;
+                }
+
+            }
+            return num;
         }
 
         static string ToReverse(string myString)
